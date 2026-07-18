@@ -1,0 +1,313 @@
+# =====================================================
+# MaceTPA Configuration
+# Made for simple, clean and modern teleport requests.
+# =====================================================
+
+# Do not remove this value.
+# MaceTPA uses it to add new default options when the plugin updates.
+config-version: 1
+
+# Main plugin prefix used in messages.
+# You can use MiniMessage colors, hex colors and gradients here.
+#
+# Example without gradient:
+# prefix: "<#8c52ff><bold>MaceTPA</bold> <dark_gray>»</dark_gray>"
+prefix: "<gradient:#8c52ff:#5ce0e6><bold>MaceTPA</bold></gradient> <dark_gray>»</dark_gray>"
+
+# How long a teleport request stays active before expiring.
+# Time is in seconds.
+#
+# Example:
+# 30 = requests expire quickly
+# 60 = balanced for most SMP servers
+# 120 = players have more time to answer
+request-expire-seconds: 60
+
+# Cooldown before a player can send another teleport request.
+# Time is in seconds.
+#
+# Players with macetpa.bypass.cooldown ignore this cooldown.
+cooldown-seconds: 15
+
+# Delay before teleporting after a request is accepted.
+# Time is in seconds.
+#
+# Players with macetpa.bypass.delay teleport instantly.
+# Set to 0 if you want instant teleports for everyone.
+teleport-delay-seconds: 5
+
+# Should teleport cancel if the player moves during countdown?
+# Recommended: true for survival/SMP servers.
+cancel-on-move: true
+
+# Should teleport cancel if the player takes damage during countdown?
+# Recommended: true to prevent escaping fights or danger too easily.
+cancel-on-damage: true
+
+# Should teleport cancel if the player attacks another entity during countdown?
+# Recommended: true if combat protection is enabled.
+cancel-on-attack: true
+
+# Should players be allowed to send only one outgoing request at a time?
+# true  = less spam, easier to understand
+# false = players can send requests to multiple players
+one-request-at-a-time: true
+
+# Should incoming requests include clickable [ACCEPT] and [DENY] buttons?
+# If disabled, players can still use /tpaccept and /tpdeny manually.
+clickable-buttons: true
+
+# Should the actionbar show the countdown before teleporting?
+actionbar-countdown: true
+
+# Safe teleport settings.
+# This helps avoid teleporting players inside blocks, lava, or unsafe spots.
+safe-teleport:
+  # Set to false if you want MaceTPA to teleport exactly to the target location.
+  enabled: true
+
+  # If the exact location is unsafe, MaceTPA can search nearby for a safe spot.
+  # Recommended: true.
+  search-nearby-safe-location: true
+
+  # How far around the target location to search for a safe spot.
+  # Larger radius means more searching. Keep it small for performance.
+  radius: 5
+
+# Default settings for players who join for the first time.
+# Players can change these with /tpasettings.
+default-player-settings:
+  # Can this player receive /tpa requests by default?
+  tpa-enabled: true
+
+  # Can this player receive /tpahere requests by default?
+  tpahere-enabled: true
+
+  # Should the confirm GUI be shown before sending a request by default?
+  confirm-request: true
+
+# Sounds used by the plugin.
+# Use Bukkit sound names for your Minecraft version.
+# If a sound name is invalid, MaceTPA will skip it instead of crashing.
+#
+# Example sound names:
+# ENTITY_EXPERIENCE_ORB_PICKUP
+# BLOCK_NOTE_BLOCK_PLING
+# ENTITY_ENDERMAN_TELEPORT
+sounds:
+  # Master switch for all plugin sounds.
+  enabled: true
+
+  # Played when a player sends a teleport request (first sound).
+  request-sent:
+    enabled: true
+    name: ENTITY_ENDER_EYE_LAUNCH
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when a player sends a teleport request (second sound, simultaneous).
+  request-sent-2:
+    enabled: true
+    name: BLOCK_AMETHYST_BLOCK_CHIME
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when a player receives a teleport request.
+  request-received:
+    enabled: true
+    name: BLOCK_AMETHYST_BLOCK_CHIME
+    volume: 1.0
+    pitch: 1.0
+  request-received-2:
+    enabled: true
+    name: BLOCK_NOTE_BLOCK_BELL
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when a request is accepted.
+  request-accepted:
+    enabled: true
+    name: BLOCK_BEACON_ACTIVATE
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when a request is denied.
+  request-denied:
+    enabled: true
+    name: ENTITY_VILLAGER_NO
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when /tpauto is turned on (beacon activate).
+  tpaauto-on:
+    enabled: true
+    name: BLOCK_BEACON_ACTIVATE
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when /tpauto is turned off (beacon deactivate).
+  tpaauto-off:
+    enabled: true
+    name: BLOCK_BEACON_DEACTIVATE
+    volume: 1.0
+    pitch: 1.0
+
+  # Played during each countdown tick.
+  teleport-countdown-tick:
+    enabled: true
+    name: BLOCK_NOTE_BLOCK_CHIME
+    volume: 1.0
+    pitch: 1.0
+  teleport-countdown-tick-2:
+    enabled: true
+    name: BLOCK_AMETHYST_BLOCK_CHIME
+    volume: 1.0
+    pitch: 1.0
+
+  # No sound is played after a successful teleport by default.
+  teleport-success:
+    enabled: false
+    name: ""
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when a teleport is cancelled.
+  teleport-cancelled:
+    enabled: true
+    name: BLOCK_BEACON_DEACTIVATE
+    volume: 1.0
+    pitch: 1.0
+
+  # Played for errors such as no permission, cooldown or invalid target.
+  error:
+    enabled: true
+    name: ENTITY_VILLAGER_NO
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when a GUI opens.
+  gui-open:
+    enabled: true
+    name: BLOCK_ENDER_CHEST_OPEN
+    volume: 1.0
+    pitch: 1.0
+
+  # Played when a player toggles a setting.
+  gui-toggle:
+    enabled: true
+    name: UI_BUTTON_CLICK
+    volume: 1.0
+    pitch: 1.0
+
+# Confirmation GUI shown before /tpa and /tpahere sends a request.
+confirm-gui:
+  enabled: true
+  expire-seconds: 30
+  region-fallback: "Europe"
+
+# Debug mode prints extra information to console.
+# Keep this false unless you are fixing an issue.
+debug: false
+
+# Worlds where teleport commands should not be used.
+# World names must match the folder/world name exactly.
+blocked-worlds:
+  # Master switch for blocked worlds.
+  enabled: true
+
+  # true  = checks both the command user's world and the target/destination world
+  # false = only checks the command user's current world
+  check-target-world: true
+
+  # Add or remove worlds here.
+  #
+  # Example:
+  # worlds:
+  #   - "pvp_arena"
+  #   - "event_world"
+  worlds:
+    - "world_pvp"
+    - "dungeons"
+    - "events"
+
+# Simple built-in combat protection.
+# No external combat plugin is required.
+combat:
+  # Set to false if you do not want MaceTPA to track combat.
+  enabled: true
+
+  # How long a player stays in combat after hitting or being hit.
+  combat-time-seconds: 15
+
+  # Block /tpa and /tpahere while the sender is in combat.
+  block-sending-requests: true
+
+  # Block /tpaccept while the accepting player is in combat.
+  block-accepting-requests: true
+
+  # Block /back while the player is in combat.
+  block-back: true
+
+  # Cancel an active countdown if the player enters combat.
+  cancel-teleport-on-combat: true
+
+  # External combat plugin integrations.
+  # MaceTPA checks these plugins before allowing teleport commands.
+  #
+  # Supported:
+  # - DeluxeCombat
+  # - CombatLogX
+  # - CombatPlus
+  #
+  # These hooks are soft integrations:
+  # - MaceTPA still works when the plugins are not installed.
+  # - MaceTPA will not crash if a plugin changes its API.
+  # - /macetpa debug shows which hooks are detected.
+  external-hooks:
+    # Master switch for all external combat hooks.
+    enabled: true
+
+    # Keep the built-in combat tracker active too.
+    # Recommended: true.
+    #
+    # Set to false if you want ONLY your external combat plugin to decide combat state.
+    use-internal-combat: true
+
+    plugins:
+      # DeluxeCombat API: checks isInCombat(Player) and remaining combat time.
+      deluxecombat: true
+
+      # CombatLogX API: checks getCombatManager().isInCombat(Player) when available.
+      combatlogx: true
+
+      # CombatPlus support is best-effort because public APIs can differ by version.
+      # If MaceTPA detects a compatible combat/tag method, it will use it.
+      combatplus: true
+
+# Anti-spam protection separate from the normal cooldown.
+# This blocks players who send too many requests in a short time.
+anti-spam:
+  enabled: true
+
+  # Maximum requests a player can send in the last 60 seconds.
+  # Players with macetpa.bypass.antispam ignore this.
+  max-requests-per-minute: 5
+
+  # How long the player is blocked after hitting the limit.
+  temporary-block-seconds: 60
+
+  # Should admins with macetpa.admin be notified when someone is blocked?
+  notify-admins: true
+
+# Config updater.
+# When enabled, MaceTPA can add missing options after updates.
+config-updater:
+  # Set to false if you want to manage all YAML updates manually.
+  enabled: true
+
+  # Create a backup before adding missing options.
+  # Backups go to plugins/MaceTPA/backups/.
+  create-backups: true
+
+  # Print a console warning when a file is outdated or updated.
+  notify-console: true

@@ -1,0 +1,70 @@
+name: MaceTPA
+version: 1.0.0
+main: net.macestudios.macetpa.MaceTPA
+api-version: "1.20"
+author: "Mace Studios"
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - DeluxeCombat
+  - CombatLogX
+  - CombatPlus
+  - Combat+
+  - Combat Plus
+
+commands:
+  tpa:
+    description: Send a teleport request to a player.
+    usage: /tpa <player>
+  tpahere:
+    description: Ask a player to teleport to you.
+    usage: /tpahere <player>
+    aliases: [tphere]
+  tpaccept:
+    description: Accept a teleport request.
+    usage: /tpaccept [player]
+  tpdeny:
+    description: Deny a teleport request.
+    usage: /tpdeny [player]
+    aliases: [tpadeny]
+  tpacancel:
+    description: Cancel your outgoing teleport request.
+    usage: /tpacancel
+  tpauto:
+    description: Toggle auto accepting teleport requests.
+    usage: /tpauto
+  tpasettings:
+    description: Open the TPA settings menu.
+    usage: /tpasettings
+    aliases: [tpsettings]
+  macetpa:
+    description: Main MaceTPA command.
+    usage: /macetpa
+
+permissions:
+  macetpa.use:
+    default: true
+  macetpa.tpa:
+    default: true
+  macetpa.tpahere:
+    default: true
+  macetpa.accept:
+    default: true
+  macetpa.deny:
+    default: true
+  macetpa.cancel:
+    default: true
+  macetpa.auto:
+    default: true
+  macetpa.settings:
+    default: true
+  macetpa.reload:
+    default: op
+  macetpa.admin:
+    default: op
+  macetpa.bypass.cooldown:
+    default: op
+  macetpa.bypass.delay:
+    default: op
+  macetpa.bypass.antispam:
+    default: op

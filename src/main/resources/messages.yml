@@ -1,0 +1,107 @@
+# =====================================================
+# MaceTPA Messages
+# All player-facing messages are configured here.
+# =====================================================
+
+# Do not remove this value.
+# MaceTPA uses it to add new default messages when the plugin updates.
+config-version: 2
+
+# Formatting:
+# - MiniMessage is supported.
+# - You can use colors like <red>, <green>, <gray>.
+# - Hex colors — any of these four syntaxes work:
+#     <#8c52ff>           MiniMessage
+#     &#8c52ff            common plugin style
+#     &x&8&c&5&2&f&f      Bukkit/BungeeCord legacy
+#     &a, &b, &c ...      standard legacy color codes
+# - You can use gradients in chat messages if you want.
+#
+# Common placeholders:
+# {prefix}       = prefix from config.yml
+# {player}       = request sender or command player
+# {target}       = request target
+# {time}         = seconds remaining
+# {request_type} = TPA or TPAHERE
+# {cost}         = economy price
+# {file}         = debug file path
+# {version}      = plugin version
+# {scheduler}    = Paper/Purpur/Folia scheduler mode
+
+messages:
+  # General command errors.
+  no-permission: "{prefix} <red>You do not have permission to use this command."
+  player-only: "{prefix} <red>Only players can use this command."
+  player-not-found: "{prefix} <red>This user is not online."
+  cannot-tpa-yourself: "{prefix} <red>You cannot send a teleport request to yourself."
+  usage-tpahere: "{prefix} <red>Usage: /tpahere <player>"
+
+  # Request creation and incoming request messages.
+  # {target} is the player receiving the request (for TPA).
+  # {player} is the player who sent the request.
+  request-sent: "{prefix} <white>You send <gradient:#8c52ff:#5ce0e6>{target}</gradient><white> a teleport request. <gray>This teleport request might be a tp trap."
+  request-sent-actionbar: "<white>You sent a teleport request."
+  request-here-sent: "{prefix} <white>You sent <gradient:#8c52ff:#5ce0e6>{target}</gradient><white> a tpa here. <gray>This teleport request might be a tp trap."
+  request-here-sent-actionbar: "<white>You sent <gradient:#8c52ff:#5ce0e6>{target}</gradient><white> a tpa here."
+
+  request-received: "{prefix} <gradient:#8c52ff:#5ce0e6>{player}</gradient> <white>sent you a tpa request."
+  request-received-actionbar: "<gradient:#8c52ff:#5ce0e6>{player}</gradient> <white>sent you a tpa request."
+  request-here-received: "{prefix} <gradient:#8c52ff:#5ce0e6>{player}</gradient> <white>sent you a tpahere request."
+  request-here-received-actionbar: "<gradient:#8c52ff:#5ce0e6>{player}</gradient> <white>sent you a tpahere request."
+
+  # Clickable accept line shown below the request message.
+  # These only appear when clickable-buttons is true in config.yml.
+  accept-click-button: "<green><bold>[CLICK]</bold></green>"
+  accept-or-type: "<gray> or type "
+  accept-type-button: "<green>/tpaccept {player}</green>"
+  accept-click-hover: "<gray>[CLICK TO ACCEPT]"
+
+  # Trap warning shown after received request.
+  request-trap-warning: "<gray>This teleport request might be a tp trap."
+
+  # Accepting, denying and cancelling requests.
+  request-accepted-sender: "{prefix} <green>{target} accepted your teleport request."
+  request-accepted-target: "{prefix} <green>You accepted this tpa."
+  request-denied-sender: "{prefix} <red>{target} denied your teleport request."
+  request-denied-target: "{prefix} <red>You denied {player}'s teleport request."
+  request-cancelled: "{prefix} <yellow>You canceled your tpa requests."
+  no-outgoing-request: "{prefix} <red>This teleport request does not exist."
+
+  # Pending request selection.
+  no-pending-requests: "{prefix} <red>This teleport request does not exist."
+  multiple-pending-requests: "{prefix} <red>You have multiple requests. Use /tpaccept <player> or /tpdeny <player>."
+
+  # Cooldown and duplicate request protection.
+  cooldown: "{prefix} <red>You cannot do this right now, on cooldown."
+  already-requested: "{prefix} <red>You cannot do this right now, on cooldown."
+
+  # Teleport countdown and result messages.
+  teleport-actionbar: "<gradient:#8c52ff:#5ce0e6>Teleporting in {time}</gradient>"
+  teleport-success: "{prefix} <green>You teleported"
+  teleport-unsafe: "{prefix} <red>That teleport location is not safe."
+  teleport-cancelled-move: "{prefix} <red>Teleport cancelled because you moved."
+  teleport-cancelled-damage: "{prefix} <red>Teleport cancelled because you took damage."
+  teleport-cancelled-attack: "{prefix} <red>Teleport cancelled because you attacked."
+
+  # Player preference toggles.
+  target-tpa-disabled: "{prefix} <red>User disabled tpa requests."
+
+  # Auto-accept toggle.
+  tpaauto-enabled: "{prefix} <green>You turned on tpauto."
+  tpaauto-disabled: "{prefix} <red>You turned off tpauto."
+
+  # Reload messages.
+  reload-success: "{prefix} <green>Configuration reloaded successfully."
+
+  # World rules and combat protection.
+  world-blocked: "{prefix} <red>You cannot use teleport requests in this world."
+  target-world-blocked: "{prefix} <red>You cannot teleport to that player's world."
+  world-tpa-disabled: "{prefix} <red>Teleport requests are disabled in this world."
+
+  # Request menu, anti-spam and debug messages.
+  too-many-requests: "{prefix} <red>You are sending requests too fast. Please wait {time}s."
+  anti-spam-admin-alert: "{prefix} <gray>{player} was temporarily blocked by anti-spam."
+  debug-created: "{prefix} <green>Debug file created: <gray>{file}</gray>"
+  debug-no-permission: "{prefix} <red>You do not have permission to use debug commands."
+  version: "{prefix} <white>Running <gradient:#8c52ff:#5ce0e6>MaceTPA v{version}</gradient><white>."
+  debug: "{prefix} <gray>Server scheduler mode is active. Server: {scheduler}"

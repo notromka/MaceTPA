@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.guardsquare:proguard-gradle:7.6.1"
+    }
+}
+
+plugins {
+    id "java"
+}
+
+group = "net.macestudios"
+version = "1.0.0"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    compileOnly fileTree(dir: "libs", include: ["*.jar"], exclude: ["junit-*.jar", "hamcrest-*.jar"])
+    testImplementation fileTree(dir: "libs", include: ["*.jar"])
+    testImplementation "com.google.guava:guava:32.1.2-jre"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.fork = true
+}
+
+tasks.register("obfuscate", proguard.gradle.ProGuardTask) {
+    group = "build"
+    description = "Creates an obfuscated release jar for distribution."
+    dependsOn tasks.jar
+
+    injars(tasks.jar.archiveFile)
+    outjars(layout.buildDirectory.file("libs/${project.name}-${project.version}-obf.jar"))
+
+    libraryjars(configurations.compileClasspath)
+    libraryjars(fileTree("${System.getProperty("java.home")}/jmods") {
+        include "*.jmod"
+    })
+
+    configuration file("proguard-rules.pro")
+    printmapping layout.buildDirectory.file("proguard/mapping.txt").get().asFile
+}

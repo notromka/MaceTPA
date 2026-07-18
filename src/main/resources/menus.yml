@@ -1,0 +1,147 @@
+# =====================================================
+# MaceTPA Menus
+# Configure the player GUIs used by /tpa, /tpahere,
+# /tpasettings and /tparequests.
+# =====================================================
+
+# Do not remove this value.
+# It lets MaceTPA know when new default menu options are available.
+config-version: 2
+
+# MiniMessage is supported here.
+# Hex colors — any of these four syntaxes work:
+#   <#8c52ff>         MiniMessage
+#   &#8c52ff          common plugin style
+#   &x&8&c&5&2&f&f    Bukkit/BungeeCord legacy
+#   &a, &b, &c ...    standard legacy color codes
+# Item names and lore in Minecraft are italic by default.
+# Keep <!italic> at the start of names/lore to make them clean.
+#
+# GUI placeholders:
+# {player}, {target}, {request_type}, {location}, {world}, {x}, {y}, {z},
+# {region}, {ping}, {expire_time}
+
+confirm-menu:
+  title: "<dark_gray><bold>ᴄᴏɴꜰɪʀᴍ ʀᴇǫᴜᴇꜱᴛ</bold>"
+  size: 27
+
+  filler:
+    enabled: false
+    material: BLACK_CONCRETE
+    name: "<!italic> "
+
+  items:
+    cancel:
+      slot: 10
+      material: RED_CONCRETE
+      name: "<!italic><red><bold>ᴄᴀɴᴄᴇʟ</bold>"
+      lore:
+        - "<!italic><gray>Do not send this request."
+        - ""
+        - "<!italic><red>Click to cancel."
+
+    location:
+      slot: 12
+      material: COMPASS
+      name: "<!italic><#8c52ff><bold>ʟᴏᴄᴀᴛɪᴏɴ</bold>"
+      lore:
+        - "<!italic><gray>World: <white>{world}</white>"
+        - "<!italic><gray>Location: <white>{location}</white>"
+
+    target-player:
+      slot: 13
+      material: PLAYER_HEAD
+      name: "<!italic><#8c52ff><bold>ᴘʟᴀʏᴇʀ</bold>"
+      lore:
+        - "<!italic><gray>Target: <white>{target}</white>"
+
+    region:
+      slot: 14
+      material: ENDER_EYE
+      name: "<!italic><#8c52ff><bold>ʀᴇɢɪᴏɴ</bold>"
+      lore:
+        - "<!italic><gray>Region: <white>{region}</white>"
+        - "<!italic><gray>Ping: <white>{ping}ms</white>"
+
+    confirm:
+      slot: 16
+      material: LIME_CONCRETE
+      name: "<!italic><green><bold>ᴄᴏɴꜰɪʀᴍ</bold>"
+      lore:
+        - "<!italic><gray>Send the teleport request to {target}."
+        - ""
+        - "<!italic><green>Click to confirm."
+
+settings-menu:
+  title: "<dark_gray><bold>ᴛᴘᴀ ꜱᴇᴛᴛɪɴɢꜱ</bold>"
+  size: 27
+
+  filler:
+    enabled: false
+    material: BLACK_CONCRETE
+    name: "<!italic> "
+
+  items:
+    tpa-toggle:
+      slot: 10
+      material-enabled: LIME_DYE
+      material-disabled: RED_DYE
+      name-enabled: "<!italic><#8c52ff><bold>ᴛᴘᴀ ʀᴇǫᴜᴇꜱᴛꜱ</bold>"
+      name-disabled: "<!italic><#8c52ff><bold>ᴛᴘᴀ ʀᴇǫᴜᴇꜱᴛꜱ</bold>"
+      lore:
+        - "<!italic><gray>Allow players to send /tpa to you."
+        - ""
+        - "<!italic><gray>Currently: <{status_color}>{status}</{status_color}>"
+        - "<!italic><yellow>Click to toggle."
+
+    tpahere-toggle:
+      slot: 12
+      material-enabled: LIME_DYE
+      material-disabled: RED_DYE
+      name-enabled: "<!italic><#8c52ff><bold>ᴛᴘᴀʜᴇʀᴇ ʀᴇǫᴜᴇꜱᴛꜱ</bold>"
+      name-disabled: "<!italic><#8c52ff><bold>ᴛᴘᴀʜᴇʀᴇ ʀᴇǫᴜᴇꜱᴛꜱ</bold>"
+      lore:
+        - "<!italic><gray>Allow players to send /tpahere to you."
+        - ""
+        - "<!italic><gray>Currently: <{status_color}>{status}</{status_color}>"
+        - "<!italic><yellow>Click to toggle."
+
+    confirm-request:
+      slot: 14
+      material-enabled: BOOK
+      material-disabled: ENDER_PEARL
+      name-enabled: "<!italic><#8c52ff><bold>ᴄᴏɴꜰɪʀᴍ ʀᴇǫᴜᴇꜱᴛ</bold>"
+      name-disabled: "<!italic><#8c52ff><bold>ᴄᴏɴꜰɪʀᴍ ʀᴇǫᴜᴇꜱᴛ</bold>"
+      lore:
+        - "<!italic><gray>Show a confirm screen before"
+        - "<!italic><gray>sending a teleport request."
+        - ""
+        - "<!italic><gray>Currently: <{status_color}>{status}</{status_color}>"
+        - "<!italic><yellow>Click to toggle."
+
+requests-menu:
+  title: "<dark_gray><bold>ᴛᴘᴀ ʀᴇǫᴜᴇꜱᴛꜱ</bold>"
+  size: 27
+
+  filler:
+    enabled: false
+    material: BLACK_CONCRETE
+    name: "<!italic> "
+
+  no-requests:
+    slot: 13
+    material: BARRIER
+    name: "<!italic><red><bold>ɴᴏ ʀᴇǫᴜᴇꜱᴛꜱ</bold>"
+    lore:
+      - "<!italic><gray>You do not have any pending"
+      - "<!italic><gray>teleport requests right now."
+
+  request-item:
+    material: PLAYER_HEAD
+    name: "<!italic><#8c52ff><bold>{player}</bold>"
+    lore:
+      - "<!italic><gray>Type: <white>{request_type}</white>"
+      - "<!italic><gray>Expires in: <white>{expire_time}s</white>"
+      - ""
+      - "<!italic><green>Left click to accept."
+      - "<!italic><red>Right click to deny."
